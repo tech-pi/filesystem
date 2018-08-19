@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import MagicMock
-from jfs.path import Path
+from jfs.api import Path
 # from ruamel.yaml import YAML
 # yaml = YAML()
 

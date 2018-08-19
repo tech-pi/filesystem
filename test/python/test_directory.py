@@ -1,7 +1,6 @@
 import pytest
 import unittest
-from jfs.path import Path
-from jfs.directory import Directory,mkdir,mv,cp,rm
+from jfs.api import Path,Directory,mkdir,mv,cp,rm
 import tempfile
 import shutil
 

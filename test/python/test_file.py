@@ -1,7 +1,6 @@
 import pytest
-import unittest
-from jfs.path import Path
-from jfs.file import File,touch,mv,cp,rm
+import unittest 
+from jfs.api import Path,File,touch,mv,cp,rm
 import tempfile
 import shutil
 
