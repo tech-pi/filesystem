@@ -72,7 +72,13 @@ class Path:
 
     @property
     def abs(self) -> str:
-        return fp.abspath(self.route)
+        #return fp.abspath(self.route)
+        if fp.isabs(self.route):
+            return self.route
+        else:
+            from fs.osfs import OSFS
+            with OSFS('.') as fs:
+                return fs.getsyspath(self.route)
 
     def absolute(self) ->'Path':
         return Path(self.abs,self.protocol)
@@ -95,7 +101,7 @@ class Path:
 
     @property
     def father(self) ->str:
-        return fp.dirname(self.route)
+        return fp.dirname(self.abs)
 
     def father_path(self) ->'Path':
         return Path(self.father,self.protocol)

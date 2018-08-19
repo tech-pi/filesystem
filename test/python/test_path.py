@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import MagicMock
-from jfs.path.model import Path
+from jfs.path import Path
 # from ruamel.yaml import YAML
 # yaml = YAML()
 
@@ -25,7 +25,7 @@ class TestPath(unittest.TestCase):
 
     def test_absolute_and_abs(self):
         inputs = ['/', 'tmp', '/tmp']
-        outputs = ['/', '/tmp', '/tmp']
+        outputs = ['/', '/home/twj2417/filesystem/test/python/tmp', '/tmp']
         subtests_ae(self, inputs, outputs, lambda x: Path(x).abs)
         subtests_ae(self, inputs, outputs, lambda x: Path(x).absolute().route,
                     len(inputs))
@@ -54,7 +54,7 @@ class TestPath(unittest.TestCase):
 
     def test_father_and_fatherpath(self):
         inputs = ['a/b', '/a/b', '/a/b/', 'a/b/']
-        outputs = ['a', '/a', '/a', 'a']
+        outputs = ['/home/twj2417/filesystem/test/python/a', '/a', '/a', '/home/twj2417/filesystem/test/python/a']
         subtests_ae(self, inputs, outputs, lambda x: Path(x).father)
         subtests_ae(self, inputs, outputs, lambda x: Path(x).father_path().route,
                     len(inputs))
