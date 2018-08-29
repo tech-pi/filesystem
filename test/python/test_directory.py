@@ -1,7 +1,6 @@
 import pytest
 import unittest
-from jfs.path import Path
-from jfs.directory import Directory,mkdir,mv,cp,rm
+from jfs.api import Path,Directory,mkdir,mv,cp,rm
 import tempfile
 import shutil
 
@@ -42,14 +41,14 @@ class TestFile(unittest.TestCase):
 
     def test_is_dir(self):
         def pos():
-            dir1 = Directory(self.root + '/sub1')
-            assert dir1.is_dir
+            dir1 = Path(self.root + '/sub1')
+            assert Directory.is_dir(dir1)
         def neg1():
-            dir1 = Directory(self.root + '/subx')
-            assert not dir1.is_dir
+            dir1 = Path(self.root + '/subx')
+            assert not Directory.is_dir(dir1)
         def neg2():
-            dir1 = Directory(self.root + '/tmp.txt')
-            assert not dir1.is_dir
+            dir1 = Path(self.root + '/tmp.txt')
+            assert not Directory.is_dir(dir1)
         pos()
         neg1()
         neg2()

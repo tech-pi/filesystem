@@ -1,7 +1,7 @@
 from ..path import Path
 from fs.osfs import OSFS
 import json
-from dxl.data import DataClass
+from doufo import DataClass
 from ..filesystem import FS
 import pathlib
 
@@ -15,16 +15,19 @@ class File:
             self.load(load_depth)
         else:
             self.contents = None
-        self.fs = self.path.father
-
+    
     @property
-    def is_file(self):
-        return pathlib.Path(self.path.abs).is_file()
+    def get_fs(self):
+        return self.path.father
+
+    @staticmethod
+    def is_file(path:Path):
+        return pathlib.Path(path.abs).is_file()
 
     @property
     def exists(self) -> bool:
-        with FS(self.fs) as fs:
-            return fs.exists(self.path.name) and fs.isfile(self.path.name)
+        with FS(self.get_fs) as fs:
+            return fs.exists(self.path.name) and File.is_file(self.path)
 
     def load(self, depth):
         self.contents = None
@@ -34,12 +37,12 @@ class File:
             raise FileNotFoundError(self.path.abs)
         if depth == 0:
             return
-        with FS(self.fs) as fs:
+        with FS(self.get_fs) as fs:
             with fs.open(self.path.abs, 'rb') as fin:
                 self.contents = fin.read()
 
     def save(self, data):
-        with FS(self.fs) as fs:
+        with FS(self.get_fs) as fs:
             with fs.open(self.path.abs, 'wb') as fout:
                 self.contents = fout.write(data)
     
