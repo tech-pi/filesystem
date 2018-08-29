@@ -6,8 +6,8 @@ Features:
 
 import pathlib 
 import fs.path as fp
-from dxl.data import DataClass
-from dxl.data.maybe import Maybe
+from doufo import DataClass
+from doufo import Maybe
 from urllib.parse import quote_plus,unquote_plus,urlparse
 
 def _unified_protocol(p:str) ->str:

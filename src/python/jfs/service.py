@@ -6,6 +6,7 @@ from .file import File
 from .file import mv as fmv
 from .file import rm as frm
 from .file import cp as fcp
+import rx
 
 
 def mv(sor, tar, overwrite=True):
@@ -27,3 +28,8 @@ def rm(sor):
         drm(sor)
     else:
         frm(sor)
+
+def search(d:Directory,filter_func=None):
+    if filter_func is None:
+        def filter_func(x): return True
+    return (rx.Obervable.from_().filter(filter_func))

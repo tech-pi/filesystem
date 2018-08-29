@@ -37,17 +37,17 @@ class TestFile(unittest.TestCase):
 
     def test_is_file(self):
         def pos():
-            file1 = File((Path(self.root) + '/tmp.txt'))
-            assert (file1.is_file)
+            path1 = Path(self.root + '/tmp.txt')
+            assert File.is_file(path1)
         def neg1():
-            fil2=File((Path(self.root) + '/tmpx.txt'))
-            assert not file2.is_file
+            path2=Path(self.root + '/tmpx.txt')
+            assert not File.is_file(path2)
         def neg2():
-            fil3=File(Path(self.root + '/sub1'))
-            assert not file3.is_file
-        pos
-        neg1
-        neg2
+            path3=Path(self.root + '/sub1')
+            assert not File.is_file(path3)
+        pos()
+        neg1()
+        neg2()
 
     def test_create_file(self):
         file1 = File(self.root + '/tmp3.txt')

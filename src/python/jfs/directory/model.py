@@ -36,19 +36,19 @@ class Directory:
                 else:
                     self.children.append(File(fp, 0))
 
-    @property
-    def is_dir(self):
-        return pathlib.Path(self.path.abs).is_dir()
+    @staticmethod
+    def is_dir(path:Path):
+        return pathlib.Path(path.abs).is_dir()
 
     @property
     def exists(self):
         with OSFS('/') as fs:
-            return fs.exists(self.path.relative) and fs.isdir(self.path.relative)
+            return fs.exists(self.path.relative) and Directory.is_dir(self.path)
 
     def ensure(self):
         if not self.exists:
             with OSFS('/') as fs:
-                fs.makedirs(self.path.rel)
+                fs.makedirs(self.path.relative)
 
     def to_serializable(self):
         return {'path': self.path.abs,
