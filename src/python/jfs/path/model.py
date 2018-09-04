@@ -32,8 +32,9 @@ def _unified_path(p)-> str:
         if isinstance(p, Path):
             return p._p
         if not isinstance(p, str):
-            raise TypeError(
-                "{} is not convertable to {}.".format(type(p), __class__))
+            print(p)
+            # raise TypeError(
+            #     "{} is not convertable to {}.".format(type(p), __class__))
         protocol, raw_path = _divide_protocol(p)
         raw_path = _decode_url(raw_path)
         raw_path = fp.normpath(raw_path)
