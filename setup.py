@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 setup(
     name='jfs',
-    version='0.1.2',
+    version='0.1.3',
     description='File Processing Library.',
     url='https://github.com/tech-pi/filesystem',
     author='Weijie Tao',
