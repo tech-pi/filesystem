@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import MagicMock
 from jfs.api import Path
-from dxl.data import List
+from doufo import List
 import pytest
 import itertools
 
