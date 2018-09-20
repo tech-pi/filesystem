@@ -8,14 +8,14 @@ import itertools
 INPUTS1 = List(['/','/tmp', '%2Ftmp', '%252Ftmp', './tmp', '/tmp/a/..'])
 OUTPUTS1 = List(['/', '/tmp', '/tmp', '/tmp', 'tmp', '/tmp'])
 INPUTS2 = ['/', 'tmp', '/tmp','/tmp/']
-OUTPUTS2 = ['/', '/home/twj2417/filesystem/test/python/tmp', '/tmp','/tmp']
+OUTPUTS2 = ['/', (Path('.')+'tmp').abs, '/tmp','/tmp']
 OUTPUTS22 = ['', 'tmp', 'tmp', 'tmp']
 OUTPUTS222 = [True,False,False,False]
 OUTPUTS2222 = [True,False,True,True]
 INPUTS3 = ['/', 'a', '/a/b', '/a/b/']
 OUTPUTS3 = ['', 'a', 'b', 'b']
 INPUTS4 = ['a/b', '/a/b', '/a/b/', 'a/b/']
-OUTPUTS4 = ['/home/twj2417/filesystem/test/python/a', '/a', '/a', '/home/twj2417/filesystem/test/python/a']
+OUTPUTS4 = [(Path('.')+'a').abs, '/a', '/a', (Path('.')+'a').abs]
 INPUTS5 = ['a', 'a.txt', '/a/b.pdf', './b.zip']
 OUTPUTS5 = ['','.txt','.pdf','.zip']
 INPUTS6 = ['a', 'a.txt', '/a/b.tar.gz']
