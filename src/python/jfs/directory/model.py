@@ -35,6 +35,7 @@ class Directory:
                     self.children.append(Directory(fp, depth - 1))
                 else:
                     self.children.append(File(fp, 0))
+        return self.children
 
     @staticmethod
     def is_dir(path:Path):
